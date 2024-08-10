@@ -1,0 +1,40 @@
+.comment-input-container {
+  position: relative;
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+button {
+  align-self: flex-end;
+  padding: 5px 10px;
+}
+
+.user-list {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.user-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-item:hover {
+  background-color: #f0f0f0;
+}

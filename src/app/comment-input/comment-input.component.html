@@ -1,0 +1,18 @@
+<div class="comment-input-container">
+  @if (showUserList) {
+    <div class="user-list">
+      @for (user of filteredUsers; track user.userID) {
+        <div (click)="selectUser(user)" class="user-item" tabindex="0">
+          {{ user.name }}
+        </div>
+      }
+    </div>
+  }
+  <div class="comment-input">
+    <textarea
+      [(ngModel)]="newComment"
+      (input)="onInputChange($event)"
+      placeholder="Type your comment here... Use @ to tag users"></textarea>
+    <button (click)="addComment()">Add Comment</button>
+  </div>
+</div>
