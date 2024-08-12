@@ -25,9 +25,7 @@ describe('CommentsListComponent', () => {
   it('should format comment text with tagged users', () => {
     component.users = [{ userID: 1, name: 'Kevin' }];
     const formattedText = component.formatCommentText('Hello @Kevin!');
-    expect(formattedText).toBe(
-      'Hello <strong class="tagged-user">@Kevin</strong>!'
-    );
+    expect(formattedText).toBe('Hello <strong>@Kevin</strong>!');
   });
 
   it('should not format text without valid tagged users', () => {
