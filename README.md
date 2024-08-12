@@ -14,6 +14,10 @@ The application consists of three main components:
 
 `CommentInputComponent`: A component for inputting new comments.
 
+`NotificationComponent`: A component for displaying notifications.
+
+`NotificationService`: A service for managing notifications.
+
 ##  Components
 
 ### CommentsComponent
@@ -69,6 +73,39 @@ This component provides functionality for inputting new comments.
 
 `addComment()`: Adds a new comment.
 
+`extractTaggedUsers(text: string)`: Extracts tagged users from the comment text.
+
+`removeDuplicateMentions(text: string)`: Removes duplicate user mentions from the comment text.
+
+`onUserKeydown(event: KeyboardEvent, user: User)`: Handles keyboard events for user selection.
+
+### NotificationComponent
+This component is responsible for displaying notifications.
+
+#### Properties:
+`notification`: The current notification to display.
+
+`subscription`: A subscription to the notification service.
+
+#### Methods:
+`ngOnInit()`: Initializes the component and subscribes to notifications.
+
+`ngOnDestroy()`: Unsubscribes from the notification service when the component is destroyed.
+
+
+## Services
+
+### NotificationService
+This service manages the creation and distribution of notifications.
+
+#### Properties:
+`notificationSubject`: A Subject for emitting notifications.
+
+`notifications$`: An Observable of notifications.
+
+#### Methods:
+show(message: string, type: 'info' | 'success' | 'warning' | 'error'): Shows a notification with the given message and type.
+
 ## Interfaces
 
 User
@@ -85,12 +122,25 @@ Comment
   taggedUsers: User[];
 }`
 
+Notification
+
+`interface Notification {
+  message: string;
+  type: 'info' | 'success' | 'warning' | 'error';
+}`
+
 ## Functionality
 
 Adding Comments: Users can enter comment text in the input field and submit it.
 Mentioning Users: When typing '@', a list of users appears for autocomplete. Selected users are added to the comment and highlighted.
+
 Displaying Comments: All added comments are displayed in a list. Mentioned users are highlighted in the comment text.
-Notifications: When a user is mentioned in a comment, the system shows a notification (currently implemented as an alert).
+
+Notifications: When a user is mentioned in a comment, the system shows a notification using the NotificationComponent.
+
+Duplicate Mention Handling: The system removes duplicate mentions of the same user in a single comment.
+
+Keyboard Navigation: Users can navigate the autocomplete list using keyboard controls.
 
 ## Styling
 Components use inline styles for basic formatting. Comments are displayed as a list, with each comment having a background highlight. The new comment input field is located below the comment list.
