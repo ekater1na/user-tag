@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #289e49;
+  --secondary-color: #f29422;
+  --white-color: #ffffff;
+  --light-gray-color: #f0f0f0;
+
+  --user-list-heights: 200px;
+}
+
+* {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  border-spacing: 0;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 16px;
+  line-height: 1.42rem;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+button {
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--white-color);
+
+  &:active,
+  &:hover {
+    background-color: var(--white-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+
+textarea {
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+
+  &:active,
+  &:focus {
+    outline: none;
+    border: 1px solid var(--secondary-color);
+  }
+}

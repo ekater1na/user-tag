@@ -1,0 +1,43 @@
+.comment-input-container {
+  position: relative;
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+button {
+  align-self: flex-end;
+  padding: 5px 10px;
+}
+
+.user-list {
+  position: absolute;
+  left: 5px;
+  right: 150px;
+  top: 40px;
+  background-color: var(--white-color);
+  border: 1px solid var(--primary-color);
+  max-height: calc(var(--user-list-heights) - 60px);
+  border-radius: 4px;
+  overflow-y: auto;
+  scrollbar-color: var(--secondary-color) var(--white-color);
+  scrollbar-width: auto;
+  z-index: 1000;
+}
+
+.user-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-item:hover {
+  background-color: var(--light-gray-color);
+}

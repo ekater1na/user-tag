@@ -1,0 +1,7 @@
+<div class="comment-list">
+  @for (comment of comments; track comment.text) {
+    <div class="comment">
+      <p [innerHTML]="formatCommentText(comment.text)"></p>
+    </div>
+  }
+</div>
