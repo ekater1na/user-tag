@@ -1,15 +1,14 @@
 .comment-list {
   margin-bottom: 20px;
+  max-height: calc(100vh - var(--user-list-heights) - 50px);
+  overflow-y: auto;
+  scrollbar-color: var(--secondary-color) var(--white-color);
+  scrollbar-width: thin;
 }
 
 .comment {
-  background-color: #f0f0f0;
+  background-color: var(--light-gray-color);
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
-}
-
-.tagged-user {
-  font-weight: bold;
-  color: #007bff;
 }
