@@ -2,7 +2,11 @@
   @if (showUserList) {
     <div class="user-list">
       @for (user of filteredUsers; track user.userID) {
-        <div (click)="selectUser(user)" class="user-item" tabindex="0">
+        <div
+          (click)="selectUser(user)"
+          (keydown)="onUserKeydown($event, user)"
+          class="user-item"
+          tabindex="0">
           {{ user.name }}
         </div>
       }

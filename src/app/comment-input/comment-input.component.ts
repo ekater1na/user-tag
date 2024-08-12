@@ -56,14 +56,51 @@ export class CommentInputComponent {
     const commentText = this.newComment.trim();
     if (commentText) {
       const taggedUsers = this.extractTaggedUsers(commentText);
-      this.commentAdded.emit({ text: commentText, taggedUsers });
+      this.commentAdded.emit({
+        text: this.removeDuplicateMentions(commentText),
+        taggedUsers,
+      });
       this.newComment = '';
     }
   }
 
   private extractTaggedUsers(text: string): User[] {
-    return this.users.filter(user =>
-      new RegExp(`@${user.name}\\b`, 'i').test(text)
-    );
+    const taggedUsers: User[] = [];
+    const uniqueUsernames = new Set<string>();
+
+    this.users.forEach(user => {
+      const regex = new RegExp(`@${user.name}\\b`, 'i');
+      if (regex.test(text) && !uniqueUsernames.has(user.name.toLowerCase())) {
+        taggedUsers.push(user);
+        uniqueUsernames.add(user.name.toLowerCase());
+      }
+    });
+
+    return taggedUsers;
+  }
+
+  private removeDuplicateMentions(text: string): string {
+    const mentionedUsers: string[] = [];
+    const words = text.split(/\s+/);
+
+    return words
+      .filter(word => {
+        if (word.startsWith('@')) {
+          const username = word.slice(1).toLowerCase();
+          if (mentionedUsers.includes(username)) {
+            return false;
+          }
+          mentionedUsers.push(username);
+        }
+        return true;
+      })
+      .join(' ');
+  }
+
+  onUserKeydown(event: KeyboardEvent, user: User) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.selectUser(user);
+      event.preventDefault();
+    }
   }
 }

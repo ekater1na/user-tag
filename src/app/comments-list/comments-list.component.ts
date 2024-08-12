@@ -18,7 +18,7 @@ export class CommentsListComponent {
       const user = this.users.find(
         u => u.name.toLowerCase() === username.toLowerCase()
       );
-      return user ? `<strong class="tagged-user">@${username}</strong>` : match;
+      return user ? `<strong>@${username}</strong>` : match;
     });
   }
 }
